@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">combustivel</string>
+    <string name="valorCombustivel">Valor do Combustível:</string>
+    <string name="valorPagamento">Valor do Pagamento</string>
+</resources>
