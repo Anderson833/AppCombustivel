@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.app.AlertDialog;
 import java.text.DecimalFormat;
 
 /**
@@ -117,7 +117,11 @@ public class Quilomentros extends AppCompatActivity {
         // Exibindo o total formatado
         totalDeKm.setText("Total de Km Percorridos "+quilomentroFormatador);
         //Toast vai exibir essa mensagem que está na linha de baixo
-        Toast.makeText(Quilomentros.this, "Seu veículo está com a quilomentragem de "+kmAtual+", Seu veículo vai percorrer "+kmApercorrer+" A quilomentragem vai chegar a "+quilomentroFormatador, Toast.LENGTH_SHORT).show();
-
+      //  Toast.makeText(Quilomentros.this, "Seu veículo está com a quilomentragem de "+kmAtual+", Seu veículo vai percorrer "+kmApercorrer+" A quilomentragem vai chegar a "+quilomentroFormatador, Toast.LENGTH_SHORT).show();
+         AlertDialog.Builder cxmsg = new AlertDialog.Builder(this);
+         cxmsg.setMessage("Seu veículo está com a quilomentragem de "+kmAtual+", Seu veículo vai percorrer "+kmApercorrer+" A quilomentragem vai chegar a "+quilomentroFormatador);
+         cxmsg.setNeutralButton("ok",null);
+             Toast.makeText(Quilomentros.this, "Muito bem Andeson você e extraórdinário ", Toast.LENGTH_SHORT).show();
+               cxmsg.show();
     }
 }

@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
 
         // variável do tipo double com nome totalLitros, para receber o valor da operação
          // valor do pagamento multiplicado por mil e dividido por valor do combustível
-        double totalLitros=valorPagar*1000/valorCOMBOST;
+        double totalLitros=valorPagar*1.000/valorCOMBOST;
         // Formatando o total em casas decimais
         String totalFormatado=formatar.format(totalLitros);
         // Variável resultado exibir o total de litros
