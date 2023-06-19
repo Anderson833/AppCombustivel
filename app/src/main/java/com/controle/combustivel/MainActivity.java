@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+
 /**
  *  Essa classe vai fazer a realização dos análises dos preços de combustiveis e quantidade dos litros
  */
@@ -90,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         }else if(valorCombustivel.getText().toString().isEmpty() ){
             //Toast exibir essa mensagem
             Toast.makeText(MainActivity.this,"Preencha o Campo Valor do Combustível!",Toast.LENGTH_LONG).show();
-            // A barrinha cameça aparecer sinalizando dentro do campo para informa os dados
+            // A barrinha começa aparecer sinalizando dentro do campo para informa os dados
             valorCombustivel.requestFocus();
             // variável analise receber o valor de true
             analise=true;
@@ -99,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         }else if(valorPagamento.getText().toString().isEmpty() ) {
             // Toast exibir essa mensagem
             Toast.makeText(MainActivity.this,"Preencha o Campo Valor do Pagamento!",Toast.LENGTH_LONG).show();
-            // A barrinha cameça aparecer sinalizando dentro do campo para informa os dados
+            // A barrinha começa aparecer sinalizando dentro do campo para informa os dados
             valorPagamento.requestFocus();
             // variável analise receber o valor de true
             analise=true;
@@ -111,6 +113,8 @@ public class MainActivity extends AppCompatActivity {
         // variável analise receber o valor de false caso nenhuma das condições seja executadas
           return analise;
       }
+      // Classe DecimalFormat para formatar os valores em casas decimais
+      DecimalFormat  formatar = new DecimalFormat("###,##0.00");
 
     /**
      * Método para fazer a operação  do valor do combustível pela quantidade de litros
@@ -124,8 +128,10 @@ public class MainActivity extends AppCompatActivity {
         // variável do tipo double com nome totalLitros, para receber o valor da operação
          // valor do pagamento multiplicado por mil e dividido por valor do combustível
         double totalLitros=valorPagar*1000/valorCOMBOST;
+        // Formatando o total em casas decimais
+        String totalFormatado=formatar.format(totalLitros);
         // Variável resultado exibir o total de litros
-        resultado.setText(" litros "+totalLitros);
+        resultado.setText(" litros "+totalFormatado);
     }
 
 }

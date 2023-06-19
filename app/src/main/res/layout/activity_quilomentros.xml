@@ -19,13 +19,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editKmAntigo"
+        android:id="@+id/editKmApercorrer"
         android:layout_width="222dp"
         android:layout_height="67dp"
         android:layout_marginTop="4dp"
         android:ems="10"
         android:gravity="center"
-        android:hint="Digite Km anterior"
+        android:hint="Digite Km apercorrer"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.391"
@@ -42,7 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editKmAntigo" />
+        app:layout_constraintTop_toBottomOf="@+id/editKmApercorrer" />
 
     <EditText
         android:id="@+id/editKmAtual"
