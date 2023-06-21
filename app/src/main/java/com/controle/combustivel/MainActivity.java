@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
         // Formatando o total em casas decimais
         String totalFormatado=formatar.format(totalLitros);
         // Variável resultado exibir o total de litros
-        resultado.setText(" litros "+totalFormatado);
+        resultado.setText("Quantidade de litros  "+totalFormatado);
     }
 
 }

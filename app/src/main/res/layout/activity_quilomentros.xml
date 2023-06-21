@@ -10,25 +10,27 @@
         android:id="@+id/TelaDeAvanca"
         android:layout_width="320dp"
         android:layout_height="42dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="72dp"
         android:text="Quantidade de Km a percorrer:"
+        android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.813"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editKmApercorrer"
-        android:layout_width="222dp"
-        android:layout_height="67dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="235dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:gravity="center"
         android:hint="Digite Km a percorrer"
         android:inputType="numberDecimal"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.391"
+        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TelaDeAvanca" />
 
@@ -37,7 +39,8 @@
         android:layout_width="182dp"
         android:layout_height="40dp"
         android:layout_marginTop="28dp"
-        android:text="Km  Atual"
+        android:text="Quilômetro  Atual"
+        android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -46,26 +49,28 @@
 
     <EditText
         android:id="@+id/editKmAtual"
-        android:layout_width="206dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="235dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:gravity="center"
         android:hint="Digite Km Atual"
         android:inputType="numberDecimal"
+        android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <Button
         android:id="@+id/operacaoKM"
-        android:layout_width="195dp"
-        android:layout_height="72dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="145dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="24dp"
         android:text="Calcular"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.462"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editKmAtual" />
 
@@ -73,10 +78,11 @@
         android:id="@+id/textTotalKm"
         android:layout_width="208dp"
         android:layout_height="70dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="36dp"
+        android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.561"
+        app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/operacaoKM" />
 </androidx.constraintlayout.widget.ConstraintLayout>

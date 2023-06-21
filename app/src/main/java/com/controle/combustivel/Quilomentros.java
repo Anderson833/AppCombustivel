@@ -119,7 +119,7 @@ public class Quilomentros extends AppCompatActivity {
         //Toast vai exibir essa mensagem que está na linha de baixo
       //  Toast.makeText(Quilomentros.this, "Seu veículo está com a quilomentragem de "+kmAtual+", Seu veículo vai percorrer "+kmApercorrer+" A quilomentragem vai chegar a "+quilomentroFormatador, Toast.LENGTH_SHORT).show();
          AlertDialog.Builder cxmsg = new AlertDialog.Builder(this);
-         cxmsg.setMessage("Seu veículo está com a quilomentragem de "+kmAtual+", Seu veículo vai percorrer "+kmApercorrer+" A quilomentragem vai chegar a "+quilomentroFormatador);
+         cxmsg.setMessage("Seu veículo está com a quilomentragem de "+kmAtual+" km e Seu veículo vai percorrer "+kmApercorrer+" km. A quilomentragem vai chegar a "+quilomentroFormatador+" km");
          cxmsg.setNeutralButton("ok",null);
              Toast.makeText(Quilomentros.this, "Muito bem Andeson você e extraórdinário ", Toast.LENGTH_SHORT).show();
                cxmsg.show();
