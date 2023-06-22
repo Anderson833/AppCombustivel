@@ -12,6 +12,9 @@
         android:theme="@style/Theme.Combustivel"
         tools:targetApi="31">
         <activity
+            android:name=".OrcamentoCombustivel"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
