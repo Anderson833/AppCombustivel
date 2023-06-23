@@ -50,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
         calcular = (Button) findViewById(R.id.calc);
         telaProxima = findViewById(R.id.TelaDeAvanca);
 
+      //Método para seta os valores e executar o calculor
+        setaValorPrecoPagamento();
+
         /**
          * Método para acessar a próxima tela
          */
@@ -73,6 +76,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    //Método para seta os dados nos campos e fazer o calculor
+     public void setaValorPrecoPagamento(){
+
+        if(SetaValores.getPrecoCombustivel()==0 && SetaValores.getValorPagamneto()==0){
+            valorCombustivel.setText(""); valorPagamento.setText("");
+        } else if (SetaValores.getPrecoCombustivel()==0) {
+            valorCombustivel.setText("");
+        } else if (SetaValores.getValorPagamneto()==0) {
+            valorPagamento.setText("");
+        }else {
+            valorCombustivel.setText("" + SetaValores.getPrecoCombustivel());
+            valorPagamento.setText("" + SetaValores.getValorPagamneto());
+            operacao();
+        }
+     }
 
     /**
      * Método para verificar se os campos estão preenchidos e realizar as operações
@@ -131,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
         // Formatando o total em casas decimais
         String totalFormatado=formatar.format(totalLitros);
         // Variável resultado exibir o total de litros
-        resultado.setText("Quantidade de litros  "+totalFormatado);
+        resultado.setText("Total de litros  "+totalFormatado);
     }
 
 }

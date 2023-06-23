@@ -2,6 +2,7 @@ package com.controle.combustivel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,10 +24,7 @@ public class LitrosPorQuilomentros extends AppCompatActivity {
      * Criado na linha de baixo uma variável para mostrar o resultado na perte inferior da tela
      */
     private TextView exibieResultado;
-    /**
-     * Criado uma variável para receber o clique do botão
-     */
-     private Button executar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,16 +34,7 @@ public class LitrosPorQuilomentros extends AppCompatActivity {
         kmLitros = findViewById(R.id.editQuilomentrosPorLitros);
           // variável para armazenar o resultado da operação
         exibieResultado = findViewById(R.id.totalLitros);
-        // Criado uma variável  para armazenar ação do botão
-        executar = (Button) findViewById(R.id.buttonExecutar);
-        // método para executar uma ação do botão
-        executar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Método que vai verificar os campos e executar o calculor
-                verificaCamposVaziosEcalcularKm();
-            }
-        });
+
     }
       // Classe DecimalFormat serve para formatar os valores em casas decimais
         DecimalFormat decimalFt = new DecimalFormat("###,##0.00");
@@ -56,17 +45,61 @@ public class LitrosPorQuilomentros extends AppCompatActivity {
          //Passando nas linhas de baixo os dados do tipo String para Double
         double quilomentragem=Double.parseDouble(KmPercorrer.getText().toString());
         double KM_LITROS=Double.parseDouble(kmLitros.getText().toString());
+        // passando os valores para seta em outras telas
+         SetaValores.setDistanciaPercorrer(quilomentragem);
+         SetaValores.setKmPorLitros(KM_LITROS);
         // Variável na linha de baixo armazenar o resultado da divisão
         double divisao=quilomentragem/KM_LITROS;
         // formatar o resultado em casas decimais
         String totalFormatado=decimalFt.format(divisao);
-        exibieResultado.setText("Quantidade de "+totalFormatado+" litros");
+        //Passando o total para seta em outras telas
+        SetaValores.setTotalLitros(divisao);
+        exibieResultado.setText("Total é de "+totalFormatado+" litros");
 
     }
 
     /**
-     * Método para saber se algum ou todos so campos estão vazios e executar o método da operação
-     * @return
+     * Método abrir outra tela de OrcamentoComvuctivel
+     * @param view
+     */
+    public void navegarProximaTela(View view){
+        Intent itTela = new Intent(LitrosPorQuilomentros.this,OrcamentoCombustivel.class);
+        startActivity(itTela);
+       // finish();
+    }
+
+    /**
+     * Método paata limpar os campos
+     */
+    public void limparCampos(View view){
+
+        if(KmPercorrer.getText().toString().isEmpty() && kmLitros.getText().toString().isEmpty()){
+            limparTodosCamposDoAutoComplete();
+            Toast.makeText(this, "Os campos já estão sem dados!", Toast.LENGTH_SHORT).show();
+        }else{
+            KmPercorrer.setText("");
+            kmLitros.setText("");
+            exibieResultado.setText("");
+            limparTodosCamposDoAutoComplete();
+        }
+
+     }
+
+    /**
+     * Método para limpar todos so campos que contém os dados setados
+     */
+    public void limparTodosCamposDoAutoComplete(){
+        SetaValores.setTotalLitros(0);
+        SetaValores.setValorPagamneto(0);
+        SetaValores.setKmPorLitros(0);
+        SetaValores.setPrecoCombustivel(0);
+        SetaValores.setDistanciaPercorrer(0);
+        SetaValores.setKmAtual(0);
+
+     }
+    /**
+     * Método para saber se algum ou todos os campos estão vazios e executar o método da operação
+     * @return valor lógico true ou false
      */
     public boolean verificaCamposVaziosEcalcularKm(){
         // Variável do tipo boolean do nome campos com valor false, Para passar a condição que for executada
@@ -85,6 +118,8 @@ public class LitrosPorQuilomentros extends AppCompatActivity {
             Toast.makeText(this, "Preencha o campo de quilomentragem !", Toast.LENGTH_SHORT).show();
             // A barra vai aparecer dentro do campo de texto para indica onde dever informa os dados
             KmPercorrer.requestFocus();
+            // O campo que exibir o total ficar sem nenhum valor
+            exibieResultado.setText(" ");
             //Variável campos receber o valor true
             campos=true;
             // Condição para saber se no campo de texto kmLitros está vazio
@@ -93,6 +128,8 @@ public class LitrosPorQuilomentros extends AppCompatActivity {
             Toast.makeText(this, "Preencha o campo km/l", Toast.LENGTH_SHORT).show();
             // A barra vai aparecer dentro do campo de texto para indica onde dever informa os dados
             kmLitros.requestFocus();
+            // O campo que exibir o total ficar sem nenhum valor
+            exibieResultado.setText(" ");
             // Variável campos receber o valor true
             campos=true;
         }else{
@@ -104,4 +141,11 @@ public class LitrosPorQuilomentros extends AppCompatActivity {
         // Retorna a variável campos com algum valor true ou false
         return campos;
     }
+
+    // método para executar uma ação do botão
+     public void acaoBotao(View view){
+         // Método que vai verificar os campos e executar o calculor
+         verificaCamposVaziosEcalcularKm();
+
+     }
 }

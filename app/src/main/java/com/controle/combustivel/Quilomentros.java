@@ -46,7 +46,8 @@ public class Quilomentros extends AppCompatActivity {
         totalDeKm = findViewById(R.id.textTotalKm);
         operacaoKm = (Button) findViewById(R.id.operacaoKM);
 
-
+        // Método para seta o quilômetro no campo de texto
+        setaQuilomentroPercorrer();
         /**
          * Método para executaar uma ação ao clicar quando for clicado
          */
@@ -58,6 +59,19 @@ public class Quilomentros extends AppCompatActivity {
             }
         });
 
+    }
+
+    /**
+     * Método para seta a quilomentragem que vai percorrer
+     */
+    public void setaQuilomentroPercorrer(){
+
+        if(SetaValores.getDistanciaPercorrer()==0){
+            QuilomentroApercorrer.setText("");
+        }else {
+            QuilomentroApercorrer.setText(""+ SetaValores.getDistanciaPercorrer());
+            QuilomentroAtual.requestFocus();
+        }
     }
 
     /**
@@ -121,7 +135,7 @@ public class Quilomentros extends AppCompatActivity {
          AlertDialog.Builder cxmsg = new AlertDialog.Builder(this);
          cxmsg.setMessage("Seu veículo está com a quilomentragem de "+kmAtual+" km e Seu veículo vai percorrer "+kmApercorrer+" km. A quilomentragem vai chegar a "+quilomentroFormatador+" km");
          cxmsg.setNeutralButton("ok",null);
-             Toast.makeText(Quilomentros.this, "Muito bem Andeson você e extraórdinário ", Toast.LENGTH_SHORT).show();
-               cxmsg.show();
+         cxmsg.show();
+             Toast.makeText(Quilomentros.this, "TIRE UM PRINT DESSA TELA CASO QUERA LEMBRA DEPOIS!", Toast.LENGTH_SHORT).show();
     }
 }

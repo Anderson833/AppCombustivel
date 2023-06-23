@@ -17,7 +17,7 @@ import java.text.DecimalFormat;
  */
 public class QuilometroPL extends AppCompatActivity {
         // As variáveis criadas na linha de baixo para pegar os dados dos campos de textos
-        private EditText QuantidadeKm, QuilomentroPorLitro;
+        private EditText QuantidadeLitros, QuilomentroPorLitro;
         // As variáveis criadas na linha  de baixo são para exibir os resultados e informar a proxíma tela
         private TextView resultadoLtros, TelaAdiante;
         // A variável na linha de baixo é criada para receber o clique do botão
@@ -34,11 +34,14 @@ public class QuilometroPL extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quilometro_pl);
-        QuantidadeKm = findViewById(R.id.editQtdLitros);
+        QuantidadeLitros = findViewById(R.id.editQtdLitros);
         QuilomentroPorLitro = findViewById(R.id.editTextkMlitros);
         resultadoLtros = findViewById(R.id.textTotalLitros);
         calcularOperacao =(Button) findViewById(R.id.calculaLitros);
          TelaAdiante = findViewById(R.id.telaPara3);
+
+           //Método para seta os valores e executar imediatamente o calculor
+          setaTotlaLitrosQtdKmlitro();
 
           // Método para abrir a proxíma tela ao clicar no link
          TelaAdiante.setOnClickListener(new View.OnClickListener() {
@@ -61,24 +64,43 @@ public class QuilometroPL extends AppCompatActivity {
     }
 
     /**
+     * Método para seta os valores e executar imediatamente o calculor
+     */
+    public void setaTotlaLitrosQtdKmlitro(){
+
+        double totalLitros=SetaValores.getTotalLitros();
+
+        if(totalLitros==0 && SetaValores.getKmPorLitros()==0){
+            QuantidadeLitros.setText(""); QuilomentroPorLitro.setText("");
+        } else if (totalLitros==0) {
+            QuantidadeLitros.setText("");
+        } else if (SetaValores.getKmPorLitros()==0) {
+            QuilomentroPorLitro.setText("");
+        }else {
+            QuantidadeLitros.setText("" + SetaValores.getTotalLitros());
+            QuilomentroPorLitro.setText("" + SetaValores.getKmPorLitros());
+            processamentoDoCalculor();
+        }
+    }
+    /**
      *  Método para verificar se os campos de textos estão vazios, caso ao não esteja será processado o calculor
      * @return
      */
     public boolean verificaCamposVaziosEprocessaCalculos(){
         // Váriavel campos do tipo boolean com valor false
         boolean campos=false;
-        // Condição para verificar se os campos de Quantidadekm e QuilômentroPorLitros estão vazios
-        if(QuantidadeKm.getText().toString().isEmpty() && QuilomentroPorLitro.getText().toString().isEmpty()){
+        // Condição para verificar se os campos de Quantidadelitros e QuilômentroPorLitros estão vazios
+        if(QuantidadeLitros.getText().toString().isEmpty() && QuilomentroPorLitro.getText().toString().isEmpty()){
             //Na linha de baixo o toast exibir uma mensagem
             Toast.makeText(QuilometroPL.this, "Preencha os campos", Toast.LENGTH_SHORT).show();
             // variável campos receber valor de true
             campos=true;
-            // Condição para saber se campo QuantidadeKm está vazio
-        } else if (QuantidadeKm.getText().toString().isEmpty()) {
+            // Condição para saber se campo QuantidadeLitros está vazio
+        } else if (QuantidadeLitros.getText().toString().isEmpty()) {
             //Na linha de baixo o toast exibir  uma mensagem
             Toast.makeText(QuilometroPL.this, "Preencha o campo Quantidade Km!", Toast.LENGTH_SHORT).show();
             // Aparecerar uma barra dentro do campo de texto indicando onde dever informa os dados
-            QuantidadeKm.requestFocus();
+            QuantidadeLitros.requestFocus();
             //Variável campos receber o valor lógico de true
             campos=true;
             // Condição para saber se o campo de QuilômentroPorLitro está vazio
@@ -106,13 +128,13 @@ public class QuilometroPL extends AppCompatActivity {
      */
     public void processamentoDoCalculor(){
         //Passando a variável QuantidadeKm do tipo String para double
-        double quilomentragem=Double.parseDouble(QuantidadeKm.getText().toString());
+        double quilomentragem=Double.parseDouble(QuantidadeLitros.getText().toString());
         //Passando a variável QuilômentroPorLitro tipo String para double
         double klPorLitros=Double.parseDouble(QuilomentroPorLitro.getText().toString());
         // variável resultado vai armazenar o valor da multiplicação que está na linha abaixo
         double resultado=klPorLitros*quilomentragem;
          String ResultadoFormatado=format.format(resultado);
         // variável abaixo mostrar o resultado da multiplicação
-        resultadoLtros.setText("Quantidade Km/l  "+ResultadoFormatado);
+        resultadoLtros.setText("Quantidade de Km "+ResultadoFormatado);
     }
 }
