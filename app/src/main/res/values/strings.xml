@@ -2,6 +2,8 @@
     <string name="app_name">combustivel</string>
     <string name="valorCombustivel">Valor do Combustível:</string>
     <string name="valorPagamento">Valor do Pagamento</string>
+    <string name="nome_do_app">Orçar Combustível</string>
+    <string name="Calcular_km">Calcular orçamento</string>
     <string name="title_activity_qtd_litros_por_quilomentragem">qtdLitrosPorQuilomentragem</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

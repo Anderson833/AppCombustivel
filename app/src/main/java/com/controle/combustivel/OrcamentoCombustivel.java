@@ -39,15 +39,15 @@ public class OrcamentoCombustivel extends AppCompatActivity {
 
     }
 
+
     /**
-     * Método para exibir a quitidade de litros
+     * Método para exibir a quantidade de litros
      */
     public void setaTotalKm() {
-
         if (SetaValores.getTotalLitros()==0) {
             totalKm.setText("");
         } else{
-            totalKm.setText("" + SetaValores.getTotalLitros());
+            totalKm.setText(""+SetaValores.getTotalLitros());
        }
     }
     /**

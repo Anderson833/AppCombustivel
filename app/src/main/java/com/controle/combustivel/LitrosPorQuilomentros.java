@@ -69,7 +69,7 @@ public class LitrosPorQuilomentros extends AppCompatActivity {
     }
 
     /**
-     * Método paata limpar os campos
+     * Método para limpar os campos
      */
     public void limparCampos(View view){
 
