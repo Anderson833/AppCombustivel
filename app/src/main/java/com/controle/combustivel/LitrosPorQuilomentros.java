@@ -38,6 +38,8 @@ public class LitrosPorQuilomentros extends AppCompatActivity {
     }
       // Classe DecimalFormat serve para formatar os valores em casas decimais
         DecimalFormat decimalFt = new DecimalFormat("###,##0.00");
+
+    String totalFormatado="";
     /**
      * Método para executar a operação da quilomentragem
      */
@@ -51,7 +53,7 @@ public class LitrosPorQuilomentros extends AppCompatActivity {
         // Variável na linha de baixo armazenar o resultado da divisão
         double divisao=quilomentragem/KM_LITROS;
         // formatar o resultado em casas decimais
-        String totalFormatado=decimalFt.format(divisao);
+         totalFormatado=decimalFt.format(divisao);
         //Passando o total para seta em outras telas
         SetaValores.setTotalLitros(divisao);
         exibieResultado.setText("Total é de "+totalFormatado+" litros");
@@ -64,6 +66,8 @@ public class LitrosPorQuilomentros extends AppCompatActivity {
      */
     public void navegarProximaTela(View view){
         Intent itTela = new Intent(LitrosPorQuilomentros.this,OrcamentoCombustivel.class);
+        String totalLitros=totalFormatado.replace(",",".");
+        itTela.putExtra("total_litros",totalLitros);
         startActivity(itTela);
        // finish();
     }

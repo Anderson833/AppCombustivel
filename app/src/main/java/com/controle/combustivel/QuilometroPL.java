@@ -67,20 +67,11 @@ public class QuilometroPL extends AppCompatActivity {
      * Método para seta os valores e executar imediatamente o calculor
      */
     public void setaTotlaLitrosQtdKmlitro(){
-
-        double totalLitros=SetaValores.getTotalLitros();
-
-        if(totalLitros==0 && SetaValores.getKmPorLitros()==0){
-            QuantidadeLitros.setText(""); QuilomentroPorLitro.setText("");
-        } else if (totalLitros==0) {
-            QuantidadeLitros.setText("");
-        } else if (SetaValores.getKmPorLitros()==0) {
-            QuilomentroPorLitro.setText("");
-        }else {
-            QuantidadeLitros.setText("" + SetaValores.getTotalLitros());
+            Intent intent=getIntent();
+           String litros= intent.getStringExtra("qtdLitros");
+            QuantidadeLitros.setText(litros);
             QuilomentroPorLitro.setText("" + SetaValores.getKmPorLitros());
             processamentoDoCalculor();
-        }
     }
     /**
      *  Método para verificar se os campos de textos estão vazios, caso ao não esteja será processado o calculor

@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Aqui na linha de baixo, fazer ação de uma activity para outra
                 Intent tel = new Intent(MainActivity.this,QuilometroPL.class);
+                tel.putExtra("qtdLitros",tt);
                 startActivity(tel);
             }
         });
@@ -79,20 +80,14 @@ public class MainActivity extends AppCompatActivity {
 
     //Método para seta os dados nos campos e fazer o calculor
      public void setaValorPrecoPagamento(){
-
-        if(SetaValores.getPrecoCombustivel()==0 && SetaValores.getValorPagamneto()==0){
-            valorCombustivel.setText(""); valorPagamento.setText("");
-        } else if (SetaValores.getPrecoCombustivel()==0) {
-            valorCombustivel.setText("");
-        } else if (SetaValores.getValorPagamneto()==0) {
-            valorPagamento.setText("");
-        }else {
-            valorCombustivel.setText("" + SetaValores.getPrecoCombustivel());
-            valorPagamento.setText("" + SetaValores.getValorPagamneto());
-            operacao();
-        }
+        Intent it=getIntent();
+     String total=it.getStringExtra("valor_total");
+        valorCombustivel.setText(it.getStringExtra("precoCombustivel"));
+        valorPagamento.setText(total);
+         operacao();
      }
-
+     //Variável para armazenar o total de litros
+    String tt="";
     /**
      * Método para verificar se os campos estão preenchidos e realizar as operações
      * @return uma valor true ou false
@@ -149,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
         double totalLitros=valorPagar*1.000/valorCOMBOST;
         // Formatando o total em casas decimais
         String totalFormatado=formatar.format(totalLitros);
+        tt=totalFormatado.replace(",",".");
         // Variável resultado exibir o total de litros
         resultado.setText("Total de litros  "+totalFormatado);
     }

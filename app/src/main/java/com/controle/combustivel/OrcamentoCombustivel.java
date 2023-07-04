@@ -38,27 +38,23 @@ public class OrcamentoCombustivel extends AppCompatActivity {
         setaTotalKm();
 
     }
-
+    String valorTotal="";
 
     /**
      * Método para exibir a quantidade de litros
      */
     public void setaTotalKm() {
-        if (SetaValores.getTotalLitros()==0) {
+      /*  if (SetaValores.getTotalLitros()==0) {
             totalKm.setText("");
         } else{
             totalKm.setText(""+SetaValores.getTotalLitros());
-       }
+       }*/
+        Intent itt=getIntent();
+       String total_litros= itt.getStringExtra("total_litros");
+       totalKm.setText(""+total_litros);
+
     }
-    /**
-     * Método para abrir a tela de Activity main
-     * @param v
-     */
-    public void avancaTela(View v){
-        Intent tela = new Intent(OrcamentoCombustivel.this,MainActivity.class);
-        startActivity(tela);
-        //finish();
-    }
+
 
     /**
      * Método para mostrar o resultado da operação do orçamento
@@ -130,8 +126,21 @@ public class OrcamentoCombustivel extends AppCompatActivity {
         //Passando o valor total do pagamento
         SetaValores.setValorPagamneto(resultado);
         //Formatando o total para casas decimais
-        String valorTotal=decimalFt.format(resultado);
+         valorTotal=decimalFt.format(resultado);
         exibirTotal.setText("Valor a pagar é de R$ "+valorTotal+" Reais");
 
+    }
+
+    /**
+     * Método para abrir a tela de Activity main
+     * @param v
+     */
+    public void avancaTela(View v){
+        Intent tela = new Intent(OrcamentoCombustivel.this,MainActivity.class);
+        String total =valorTotal.replace(",",".");
+        tela.putExtra("precoCombustivel",valorCombustivel.getText().toString());
+        tela.putExtra("valor_total",total);
+        startActivity(tela);
+        //finish();
     }
 }
