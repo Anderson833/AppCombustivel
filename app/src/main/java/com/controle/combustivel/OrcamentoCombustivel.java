@@ -132,6 +132,6 @@ public class OrcamentoCombustivel extends AppCompatActivity {
         //Formatando o total para casas decimais
         String valorTotal=decimalFt.format(resultado);
         exibirTotal.setText("Valor a pagar é de R$ "+valorTotal+" Reais");
-
+        // Corrigindo versão
     }
 }
