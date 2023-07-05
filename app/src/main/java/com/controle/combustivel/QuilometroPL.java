@@ -58,7 +58,7 @@ public class QuilometroPL extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Método que vai verificar e processar a operação
-              verificaCamposVaziosEprocessaCalculos();
+                verificaCamposVaziosEprocessaCalculos();
             }
         });
     }
@@ -66,67 +66,64 @@ public class QuilometroPL extends AppCompatActivity {
     /**
      * Método para seta os valores e executar imediatamente o calculor
      */
-    public void setaTotlaLitrosQtdKmlitro(){
-            Intent intent=getIntent();
-           String litros= intent.getStringExtra("qtdLitros");
-            QuantidadeLitros.setText(litros);
-            QuilomentroPorLitro.setText("" + SetaValores.getKmPorLitros());
+    public void setaTotlaLitrosQtdKmlitro() {
 
-        double totalLitros=SetaValores.getTotalLitros();
+        double totalLitros = SetaValores.getTotalLitros();
 
-        if(totalLitros==0 && SetaValores.getKmPorLitros()==0){
-            QuantidadeLitros.setText(""); QuilomentroPorLitro.setText("");
-        } else if (totalLitros==0) {
+        if (totalLitros == 0 && SetaValores.getKmPorLitros() == 0) {
             QuantidadeLitros.setText("");
-        } else if (SetaValores.getKmPorLitros()==0) {
             QuilomentroPorLitro.setText("");
-        }else {
-            double qtdLitros=SetaValores.getTotalLitros();
-            double qtdLitroKm=SetaValores.getKmPorLitros();
-            String tlLitros=format.format(qtdLitros).replace(",",".");
-            String kmPorLts=format.format(qtdLitroKm).replace(",",".");
+        } else if (totalLitros == 0) {
+            QuantidadeLitros.setText("");
+        } else if (SetaValores.getKmPorLitros() == 0) {
+            QuilomentroPorLitro.setText("");
+        } else {
+            double qtdLitros = SetaValores.getTotalLitros();
+            double qtdLitroKm = SetaValores.getKmPorLitros();
+            String tlLitros = format.format(qtdLitros).replace(",", ".");
+            String kmPorLts = format.format(qtdLitroKm).replace(",", ".");
             QuantidadeLitros.setText(tlLitros);
             QuilomentroPorLitro.setText(kmPorLts);
             processamentoDoCalculor();
-    }
-    /**
-     *  Método para verificar se os campos de textos estão vazios, caso ao não esteja será processado o calculor
-     * @return
-     */
-    public boolean verificaCamposVaziosEprocessaCalculos(){
-        // Váriavel campos do tipo boolean com valor false
-        boolean campos=false;
-        // Condição para verificar se os campos de Quantidadelitros e QuilômentroPorLitros estão vazios
-        if(QuantidadeLitros.getText().toString().isEmpty() && QuilomentroPorLitro.getText().toString().isEmpty()){
-            //Na linha de baixo o toast exibir uma mensagem
-            Toast.makeText(QuilometroPL.this, "Preencha os campos", Toast.LENGTH_SHORT).show();
-            // variável campos receber valor de true
-            campos=true;
-            // Condição para saber se campo QuantidadeLitros está vazio
-        } else if (QuantidadeLitros.getText().toString().isEmpty()) {
-            //Na linha de baixo o toast exibir  uma mensagem
-            Toast.makeText(QuilometroPL.this, "Preencha o campo Quantidade Km!", Toast.LENGTH_SHORT).show();
-            // Aparecerar uma barra dentro do campo de texto indicando onde dever informa os dados
-            QuantidadeLitros.requestFocus();
-            //Variável campos receber o valor lógico de true
-            campos=true;
-            // Condição para saber se o campo de QuilômentroPorLitro está vazio
-        } else if (QuilomentroPorLitro.getText().toString().isEmpty()) {
-            // Nalinha abaixo o toast exibir uma mensagem
-            Toast.makeText(QuilometroPL.this, "Preencha o campo kl/l", Toast.LENGTH_SHORT).show();
-            // Aparecerar uma barra dentro do campo de texto indicando onde dever informa os dados
-            QuilomentroPorLitro.requestFocus();
-            //Variável campos receber o valor lógico de true
-            campos=true;
-        }else{
-            //Variável campos receber o valor lógico de true
-            campos=false;
-            // Método que realizar o processamento do calculor
-            processamentoDoCalculor();
         }
-        //Variável campos retornará um valor lógico true ou false
-          return campos;
-       }
+        /**
+         *  Método para verificar se os campos de textos estão vazios, caso ao não esteja será processado o calculor
+         * @return
+         */
+        public boolean verificaCamposVaziosEprocessaCalculos () {
+            // Váriavel campos do tipo boolean com valor false
+            boolean campos = false;
+            // Condição para verificar se os campos de Quantidadelitros e QuilômentroPorLitros estão vazios
+            if (QuantidadeLitros.getText().toString().isEmpty() && QuilomentroPorLitro.getText().toString().isEmpty()) {
+                //Na linha de baixo o toast exibir uma mensagem
+                Toast.makeText(QuilometroPL.this, "Preencha os campos", Toast.LENGTH_SHORT).show();
+                // variável campos receber valor de true
+                campos = true;
+                // Condição para saber se campo QuantidadeLitros está vazio
+            } else if (QuantidadeLitros.getText().toString().isEmpty()) {
+                //Na linha de baixo o toast exibir  uma mensagem
+                Toast.makeText(QuilometroPL.this, "Preencha o campo Quantidade Km!", Toast.LENGTH_SHORT).show();
+                // Aparecerar uma barra dentro do campo de texto indicando onde dever informa os dados
+                QuantidadeLitros.requestFocus();
+                //Variável campos receber o valor lógico de true
+                campos = true;
+                // Condição para saber se o campo de QuilômentroPorLitro está vazio
+            } else if (QuilomentroPorLitro.getText().toString().isEmpty()) {
+                // Nalinha abaixo o toast exibir uma mensagem
+                Toast.makeText(QuilometroPL.this, "Preencha o campo kl/l", Toast.LENGTH_SHORT).show();
+                // Aparecerar uma barra dentro do campo de texto indicando onde dever informa os dados
+                QuilomentroPorLitro.requestFocus();
+                //Variável campos receber o valor lógico de true
+                campos = true;
+            } else {
+                //Variável campos receber o valor lógico de true
+                campos = false;
+                // Método que realizar o processamento do calculor
+                processamentoDoCalculor();
+            }
+            //Variável campos retornará um valor lógico true ou false
+            return campos;
+        }
 
        // Classe DecimalFormat fazer formatar os valores em casas decimais
         DecimalFormat format = new DecimalFormat("###,##0.00");
@@ -143,5 +140,6 @@ public class QuilometroPL extends AppCompatActivity {
          String ResultadoFormatado=format.format(resultado);
         // variável abaixo mostrar o resultado da multiplicação
         resultadoLtros.setText("Quantidade de Km "+ResultadoFormatado);
+    }
     }
 }
