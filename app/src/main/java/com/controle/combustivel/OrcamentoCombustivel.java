@@ -47,12 +47,29 @@ public class OrcamentoCombustivel extends AppCompatActivity {
       /*  if (SetaValores.getTotalLitros()==0) {
             totalKm.setText("");
         } else{
+<<<<<<< HEAD
             totalKm.setText(""+SetaValores.getTotalLitros());
        }*/
         Intent itt=getIntent();
        String total_litros= itt.getStringExtra("total_litros");
        totalKm.setText(""+total_litros);
 
+=======
+           double quantidadeLts=SetaValores.getTotalLitros();
+            String converteTotal=decimalFt.format(quantidadeLts);
+            String vg=converteTotal.replace(",",".");
+            totalKm.setText(""+vg);
+       }
+    }
+    /**
+     * Método para abrir a tela de Activity main
+     * @param v
+     */
+    public void avancaTela(View v){
+        Intent tela = new Intent(OrcamentoCombustivel.this,MainActivity.class);
+        startActivity(tela);
+        //finish();
+>>>>>>> vamosLa
     }
 
 

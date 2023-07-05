@@ -80,11 +80,30 @@ public class MainActivity extends AppCompatActivity {
 
     //Método para seta os dados nos campos e fazer o calculor
      public void setaValorPrecoPagamento(){
+<<<<<<< HEAD
         Intent it=getIntent();
      String total=it.getStringExtra("valor_total");
         valorCombustivel.setText(it.getStringExtra("precoCombustivel"));
         valorPagamento.setText(total);
          operacao();
+=======
+
+        if(SetaValores.getPrecoCombustivel()==0 && SetaValores.getValorPagamneto()==0){
+            valorCombustivel.setText(""); valorPagamento.setText("");
+        } else if (SetaValores.getPrecoCombustivel()==0) {
+            valorCombustivel.setText("");
+        } else if (SetaValores.getValorPagamneto()==0) {
+            valorPagamento.setText("");
+        }else {
+            double valor_Combustivel=SetaValores.getPrecoCombustivel();
+            double valor_Pagamento=SetaValores.getValorPagamneto();
+            String combustivelPreco=formatar.format(valor_Combustivel).replace(",",".");
+            String pagamento=formatar.format(valor_Pagamento).replace(",",".");
+            valorCombustivel.setText(combustivelPreco);
+            valorPagamento.setText(pagamento);
+            operacao();
+        }
+>>>>>>> vamosLa
      }
      //Variável para armazenar o total de litros
     String tt="";
