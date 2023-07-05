@@ -47,7 +47,10 @@ public class OrcamentoCombustivel extends AppCompatActivity {
         if (SetaValores.getTotalLitros()==0) {
             totalKm.setText("");
         } else{
-            totalKm.setText(""+SetaValores.getTotalLitros());
+           double quantidadeLts=SetaValores.getTotalLitros();
+            String converteTotal=decimalFt.format(quantidadeLts);
+            String vg=converteTotal.replace(",",".");
+            totalKm.setText(""+vg);
        }
     }
     /**

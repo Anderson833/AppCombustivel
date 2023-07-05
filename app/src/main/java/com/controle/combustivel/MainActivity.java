@@ -87,8 +87,12 @@ public class MainActivity extends AppCompatActivity {
         } else if (SetaValores.getValorPagamneto()==0) {
             valorPagamento.setText("");
         }else {
-            valorCombustivel.setText("" + SetaValores.getPrecoCombustivel());
-            valorPagamento.setText("" + SetaValores.getValorPagamneto());
+            double valor_Combustivel=SetaValores.getPrecoCombustivel();
+            double valor_Pagamento=SetaValores.getValorPagamneto();
+            String combustivelPreco=formatar.format(valor_Combustivel).replace(",",".");
+            String pagamento=formatar.format(valor_Pagamento).replace(",",".");
+            valorCombustivel.setText(combustivelPreco);
+            valorPagamento.setText(pagamento);
             operacao();
         }
      }

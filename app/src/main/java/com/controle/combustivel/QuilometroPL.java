@@ -77,8 +77,12 @@ public class QuilometroPL extends AppCompatActivity {
         } else if (SetaValores.getKmPorLitros()==0) {
             QuilomentroPorLitro.setText("");
         }else {
-            QuantidadeLitros.setText("" + SetaValores.getTotalLitros());
-            QuilomentroPorLitro.setText("" + SetaValores.getKmPorLitros());
+            double qtdLitros=SetaValores.getTotalLitros();
+            double qtdLitroKm=SetaValores.getKmPorLitros();
+            String tlLitros=format.format(qtdLitros).replace(",",".");
+            String kmPorLts=format.format(qtdLitroKm).replace(",",".");
+            QuantidadeLitros.setText(tlLitros);
+            QuilomentroPorLitro.setText(kmPorLts);
             processamentoDoCalculor();
         }
     }
