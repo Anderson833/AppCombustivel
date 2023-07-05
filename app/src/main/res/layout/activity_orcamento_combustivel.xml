@@ -4,36 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FDCC3D49"
+    android:background="@drawable/fundoapp"
     android:onClick="setaOrcamento"
     tools:context=".OrcamentoCombustivel">
 
+    <View
+        android:id="@+id/ViewT2"
+        style="@style/containerView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
     <TextView
         android:id="@+id/textView8"
-        android:layout_width="235dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="16dp"
         android:text="Preço do Combustível"
-        android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        style="@style/textViewInformacao"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        app:layout_constraintTop_toTopOf="@+id/ViewT2" />
 
     <EditText
         android:id="@+id/valorCombustivel"
-        android:layout_width="239dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="4dp"
-        android:ems="10"
+         style="@style/editText"
         android:hint="Informe o preço "
-        android:inputType="numberDecimal"
         android:maxLength="10"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,44 +36,28 @@
 
     <TextView
         android:id="@+id/textView10"
-        android:layout_width="233dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="24dp"
         android:text="Total de litros"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
+        style="@style/textViewInformacao"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/valorCombustivel" />
 
     <EditText
         android:id="@+id/QuilometroLitros"
-        android:layout_width="235dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
         android:hint="Informe km/l"
-        android:inputType="numberDecimal"
+         style="@style/editText"
         android:maxLength="10"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
         android:focusable="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonOrcamento"
-        android:layout_width="194dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="30dp"
-        android:background="@color/white"
+        style="@style/botao"
         android:onClick="setaOrcamento"
         android:text="Calcular"
-        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,27 +65,39 @@
 
     <TextView
         android:id="@+id/totalOrcamento"
-        android:layout_width="177dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
+         style="@style/textViewTotal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonOrcamento" />
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="151dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="24dp"
-        android:onClick="avancaTela"
-        android:text="Próxima Tela"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="16sp"
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/ViewT2">
+
+        <TextView
+            android:id="@+id/textViewtelaAnterior"
+            android:onClick="telaAnterior"
+            style="@style/textviewProximaTela"
+            android:text="Tela Anterior"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ViewP"
+            />
+        <TextView
+            android:id="@+id/textView9"
+            android:onClick="avancaTela"
+            style="@style/textviewProximaTela"
+            android:text="Próxima Tela"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

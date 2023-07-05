@@ -24,7 +24,7 @@ public class OrcamentoCombustivel extends AppCompatActivity {
     /**
      * Criado uma variável para pegar o código do campo e exibir o total
      */
-    private TextView exibirTotal;
+    private TextView exibirTotal, telaAnterior;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +36,7 @@ public class OrcamentoCombustivel extends AppCompatActivity {
         //Variável para exibir o total na tela
         exibirTotal = findViewById(R.id.totalOrcamento);
         setaTotalKm();
-
+     getSupportActionBar().hide();
     }
     String valorTotal="";
 
@@ -63,7 +63,11 @@ public class OrcamentoCombustivel extends AppCompatActivity {
         startActivity(tela);
         //finish();
     }
-
+    public void telaAnterior(View view){
+        Intent tela = new Intent(OrcamentoCombustivel.this,LitrosPorQuilomentros.class);
+        startActivity(tela);
+        //finish();
+    }
 
     /**
      * Método para mostrar o resultado da operação do orçamento

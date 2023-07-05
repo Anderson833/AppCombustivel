@@ -31,7 +31,7 @@ public class Logo_combustivel extends AppCompatActivity {
             }
         };
 
-        timer.schedule(timerTask,5000);
+        timer.schedule(timerTask,3000);
     }
 
     private void iniciaApp() {

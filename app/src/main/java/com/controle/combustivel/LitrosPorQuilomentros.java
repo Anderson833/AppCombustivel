@@ -35,6 +35,8 @@ public class LitrosPorQuilomentros extends AppCompatActivity {
           // variável para armazenar o resultado da operação
         exibieResultado = findViewById(R.id.totalLitros);
 
+        getSupportActionBar().hide();
+
     }
       // Classe DecimalFormat serve para formatar os valores em casas decimais
         DecimalFormat decimalFt = new DecimalFormat("###,##0.00");
@@ -66,10 +68,8 @@ public class LitrosPorQuilomentros extends AppCompatActivity {
      */
     public void navegarProximaTela(View view){
         Intent itTela = new Intent(LitrosPorQuilomentros.this,OrcamentoCombustivel.class);
-        String totalLitros=totalFormatado.replace(",",".");
-        itTela.putExtra("total_litros",totalLitros);
         startActivity(itTela);
-       // finish();
+        finish();
     }
 
     /**
@@ -99,6 +99,7 @@ public class LitrosPorQuilomentros extends AppCompatActivity {
         SetaValores.setPrecoCombustivel(0);
         SetaValores.setDistanciaPercorrer(0);
         SetaValores.setKmAtual(0);
+        KmPercorrer.requestFocus();
 
      }
     /**
