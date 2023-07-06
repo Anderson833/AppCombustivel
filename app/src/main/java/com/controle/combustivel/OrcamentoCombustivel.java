@@ -38,7 +38,6 @@ public class OrcamentoCombustivel extends AppCompatActivity {
         setaTotalKm();
      getSupportActionBar().hide();
     }
-    String valorTotal="";
 
     /**
      * Método para exibir a quantidade de litros
@@ -48,9 +47,8 @@ public class OrcamentoCombustivel extends AppCompatActivity {
             totalKm.setText("");
         } else{
             double quantidadeLts=SetaValores.getTotalLitros();
-            String converteTotal=decimalFt.format(quantidadeLts);
-            String vg=converteTotal.replace(",",".");
-            totalKm.setText(""+vg);
+            String converteTotal=decimalFt.format(quantidadeLts).replace(",",".");
+            totalKm.setText(""+converteTotal);
        }
 
     }
@@ -61,12 +59,12 @@ public class OrcamentoCombustivel extends AppCompatActivity {
     public void avancaTela(View view){
         Intent tela = new Intent(OrcamentoCombustivel.this,MainActivity.class);
         startActivity(tela);
-        //finish();
+
     }
     public void telaAnterior(View view){
-        Intent tela = new Intent(OrcamentoCombustivel.this,LitrosPorQuilomentros.class);
-        startActivity(tela);
-        //finish();
+        Intent telar = new Intent(OrcamentoCombustivel.this,LitrosPorQuilomentros.class);
+        startActivity(telar);
+
     }
 
     /**
@@ -139,8 +137,8 @@ public class OrcamentoCombustivel extends AppCompatActivity {
         //Passando o valor total do pagamento
         SetaValores.setValorPagamneto(resultado);
         //Formatando o total para casas decimais
-         valorTotal=decimalFt.format(resultado);
-        exibirTotal.setText("Valor a pagar é de R$ "+valorTotal+" Reais");
+         String valorTotal=decimalFt.format(resultado);
+        exibirTotal.setText("Total de R$ "+valorTotal);
         // Corrigindo versão
     }
 

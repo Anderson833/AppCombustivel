@@ -2,6 +2,7 @@ package com.controle.combustivel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -45,7 +46,7 @@ public class Quilomentros extends AppCompatActivity {
         QuilomentroAtual = findViewById(R.id.editKmAtual);
         totalDeKm = findViewById(R.id.textTotalKm);
         operacaoKm = (Button) findViewById(R.id.operacaoKM);
-
+         getSupportActionBar().hide();
         // Método para seta o quilômetro no campo de texto
         setaQuilomentroPercorrer();
         /**
@@ -61,6 +62,19 @@ public class Quilomentros extends AppCompatActivity {
 
     }
 
+    public void telaAnteriorKmLitro(View view){
+        // Método que faz a ação de uma tela para outra
+        Intent let = new Intent(Quilomentros.this, QuilometroPL.class);
+        //Passando ao objeto do tipo let
+        startActivity(let);
+    }
+
+    public void telaDeInicio(View view){
+        // Método que faz a ação de uma tela para outra
+        Intent let = new Intent(Quilomentros.this, LitrosPorQuilomentros.class);
+        //Passando ao objeto do tipo let
+        startActivity(let);
+    }
     /**
      * Método para seta a quilomentragem que vai percorrer
      */
@@ -69,7 +83,9 @@ public class Quilomentros extends AppCompatActivity {
         if(SetaValores.getDistanciaPercorrer()==0){
             QuilomentroApercorrer.setText("");
         }else {
-            QuilomentroApercorrer.setText(""+ SetaValores.getDistanciaPercorrer());
+             double distancia=SetaValores.getDistanciaPercorrer();
+             String totalDistancia=decimalFormat.format(distancia).replace(",",".");
+            QuilomentroApercorrer.setText(""+totalDistancia);
             QuilomentroAtual.requestFocus();
         }
     }
@@ -129,7 +145,7 @@ public class Quilomentros extends AppCompatActivity {
         // formatando o total para casas decimais
         String quilomentroFormatador=decimalFormat.format(total);
         // Exibindo o total formatado
-        totalDeKm.setText("Total de Km Percorridos "+quilomentroFormatador);
+        totalDeKm.setText("Total de km "+quilomentroFormatador);
         //Toast vai exibir essa mensagem que está na linha de baixo
       //  Toast.makeText(Quilomentros.this, "Seu veículo está com a quilomentragem de "+kmAtual+", Seu veículo vai percorrer "+kmApercorrer+" A quilomentragem vai chegar a "+quilomentroFormatador, Toast.LENGTH_SHORT).show();
          AlertDialog.Builder cxmsg = new AlertDialog.Builder(this);

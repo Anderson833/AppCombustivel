@@ -42,7 +42,7 @@ public class QuilometroPL extends AppCompatActivity {
 
         //Método para seta os valores e executar imediatamente o calculor
         setaTotlaLitrosQtdKmlitro();
-
+        getSupportActionBar().hide();
         // Método para abrir a proxíma tela ao clicar no link
         TelaAdiante.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +63,12 @@ public class QuilometroPL extends AppCompatActivity {
         });
     }
 
+    public void telaAnteriorMain(View view){
+        // Método que faz a ação de uma tela para outra
+        Intent let = new Intent(QuilometroPL.this, MainActivity.class);
+        //Passando ao objeto do tipo let
+        startActivity(let);
+    }
     /**
      * Método para verificar se os campos de textos estão vazios, caso ao não esteja será processado o calculor
      *
@@ -116,7 +122,7 @@ public class QuilometroPL extends AppCompatActivity {
         double resultado = klPorLitros * quilomentragem;
         String ResultadoFormatado = format.format(resultado);
         // variável abaixo mostrar o resultado da multiplicação
-        resultadoLtros.setText("Quantidade de Km " + ResultadoFormatado);
+        resultadoLtros.setText("total " + ResultadoFormatado);
     }
 
     /**

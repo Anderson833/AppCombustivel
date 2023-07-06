@@ -3,4 +3,5 @@
 
        <solid android:color="@color/cor_de_fundoView"/>
         <corners android:radius="20dp"/>
+        <stroke android:color="@color/white" android:width="5dp"/>
 </shape>

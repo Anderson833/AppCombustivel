@@ -4,68 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fundoapp"
     tools:context=".MainActivity">
-
+<View
+     android:id="@+id/ViewTelaMain"
+    style="@style/containerView"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    />
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="220dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="100dp"
         android:text="@string/valorCombustivel"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        style="@style/textViewInformacao"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.429"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/ViewTelaMain"/>
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="218dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="36dp"
+        style="@style/textViewInformacao"
         android:text="Valor do Pagamento:"
-        android:textAlignment="center"
-        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.435"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/valorCombust"
-        tools:ignore="HardcodedText,MissingConstraints" />
+         />
 
     <EditText
         android:id="@+id/valorCombust"
-        android:layout_width="235dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:inputType="numberDecimal"
+        style="@style/editText"
         android:maxLength="10"
-        android:textAlignment="center"
+        android:hint="Informe o preço"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.406"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
         android:id="@+id/editValorPagamento"
-        android:layout_width="235dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:inputType="numberDecimal"
         android:maxLength="10"
-        android:textAlignment="center"
+        style="@style/editText"
+        android:hint="Valor do pagamento"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/calc"
-        android:layout_width="146dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="28dp"
+        style="@style/botao"
         android:text="Calcular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,26 +58,39 @@
 
     <TextView
         android:id="@+id/TxtResultado"
-        android:layout_width="203dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="36dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        style="@style/textViewTotal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calc" />
 
-    <TextView
-        android:id="@+id/TelaDeAvanca"
-        android:layout_width="191dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="16dp"
-        android:text="Próxima Tela"
-        android:textAlignment="center"
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/ViewTelaMain">
+
+        <TextView
+            android:id="@+id/textViewtelaAnterior"
+            android:onClick="telaAnteriorOrcamento"
+            style="@style/textviewProximaTela"
+            android:text="Tela Anterior"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            />
+        <TextView
+            android:id="@+id/TelaDeAvanca"
+            style="@style/textviewProximaTela"
+            android:text="Próxima Tela"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

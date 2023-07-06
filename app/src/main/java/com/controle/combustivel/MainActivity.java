@@ -50,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         calcular = (Button) findViewById(R.id.calc);
         telaProxima = findViewById(R.id.TelaDeAvanca);
 
+         getSupportActionBar().hide();
+
       //Método para seta os valores e executar o calculor
         setaValorPrecoPagamento();
 
@@ -65,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         /**
          * Método para realizar a ação do butão ao clicar
          */
@@ -75,6 +78,12 @@ public class MainActivity extends AppCompatActivity {
                  verificaCamposErealizaOperacao();
             }
         });
+    }
+
+    public void telaAnteriorOrcamento(View view){
+// Aqui na linha de baixo, fazer ação de uma activity para outra
+        Intent tel = new Intent(MainActivity.this,OrcamentoCombustivel.class);
+        startActivity(tel);
     }
 
     //Método para seta os dados nos campos e fazer o calculor

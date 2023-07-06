@@ -4,87 +4,90 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fundoapp"
     tools:context=".Quilomentros">
-
+ <View
+      android:id="@+id/ViewTelaQuilometro"
+     style="@style/containerView"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintTop_toTopOf="parent"
+     />
     <TextView
-        android:id="@+id/TelaDeAvanca"
-        android:layout_width="320dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="72dp"
-        android:text="Quantidade de Km a percorrer:"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:id="@+id/TelaKm"
+        style="@style/textViewInformacao"
+        android:text=" Km a percorrer:"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/ViewTelaQuilometro" />
 
     <EditText
         android:id="@+id/editKmApercorrer"
-        android:layout_width="235dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:gravity="center"
         android:hint="Digite Km a percorrer"
-        android:inputType="numberDecimal"
         android:maxLength="5"
-        android:textAlignment="center"
+        style="@style/editText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TelaDeAvanca" />
+        app:layout_constraintTop_toBottomOf="@+id/TelaKm"/>
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="182dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="28dp"
+        style="@style/textViewInformacao"
         android:text="Quilômetro  Atual"
-        android:textAlignment="center"
-        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editKmApercorrer" />
 
     <EditText
         android:id="@+id/editKmAtual"
-        android:layout_width="235dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:gravity="center"
+        style="@style/editText"
         android:hint="Digite Km Atual"
-        android:inputType="numberDecimal"
         android:maxLength="5"
-        android:textAlignment="center"
-        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/operacaoKM"
-        android:layout_width="145dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="24dp"
         android:text="Calcular"
+        style="@style/botao"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.462"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editKmAtual" />
 
     <TextView
         android:id="@+id/textTotalKm"
-        android:layout_width="208dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="36dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        style="@style/textViewTotal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/operacaoKM" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ViewTelaQuilometro">
+        <TextView
+            android:id="@+id/TelaAnterior"
+            style="@style/textviewProximaTela"
+            android:text="Tela Anterior"
+            android:onClick="telaAnteriorKmLitro"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/TelaInicio"
+            style="@style/textviewProximaTela"
+            android:text="Tela de Início"
+            android:onClick="telaDeInicio"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
