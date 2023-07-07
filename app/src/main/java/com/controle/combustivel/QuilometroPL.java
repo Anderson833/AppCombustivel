@@ -122,7 +122,7 @@ public class QuilometroPL extends AppCompatActivity {
         double resultado = klPorLitros * quilomentragem;
         String ResultadoFormatado = format.format(resultado);
         // variável abaixo mostrar o resultado da multiplicação
-        resultadoLtros.setText("total " + ResultadoFormatado);
+        resultadoLtros.setText("total de km " + ResultadoFormatado);
     }
 
     /**

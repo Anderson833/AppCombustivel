@@ -1,12 +1,15 @@
 package com.controle.combustivel;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +28,9 @@ public class LitrosPorQuilomentros extends AppCompatActivity {
      */
     private TextView exibieResultado;
 
+    //Variável para armazenar a opção de calculor
+    private  String opcaoCalculor="";
+    private SwitchCompat  aswitch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,12 +38,38 @@ public class LitrosPorQuilomentros extends AppCompatActivity {
         // Passando as variáveis dos campos para as variáveis que foram criadas anteriomente a cima
         KmPercorrer = findViewById(R.id.editDistanciaPercorrer);
         kmLitros = findViewById(R.id.editQuilomentrosPorLitros);
+         aswitch = findViewById(R.id.SwicthCal);
           // variável para armazenar o resultado da operação
         exibieResultado = findViewById(R.id.totalLitros);
 
         getSupportActionBar().hide();
 
+        aswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                      opcaoDeCalcular(isChecked);
+            }
+        });
+
     }
+
+    /**
+     * Método para exibir as palavras ativado ou desativa para executar uma opção de calculor
+     * @param opcao
+     * @return
+     */
+    public String opcaoDeCalcular(boolean opcao){
+
+        if(opcao){
+            opcaoCalculor="Ativado";
+            Toast.makeText(LitrosPorQuilomentros.this, opcaoCalculor, Toast.LENGTH_SHORT).show();
+        }else {
+            opcaoCalculor="Desativado";
+            Toast.makeText(LitrosPorQuilomentros.this,opcaoCalculor, Toast.LENGTH_SHORT).show();
+        }
+        return  opcaoCalculor;
+    }
+
       // Classe DecimalFormat serve para formatar os valores em casas decimais
         DecimalFormat decimalFt = new DecimalFormat("###,##0.00");
 
@@ -56,6 +88,25 @@ public class LitrosPorQuilomentros extends AppCompatActivity {
         double divisao=quilomentragem/KM_LITROS;
         // formatar o resultado em casas decimais
        String totalFormatado=decimalFt.format(divisao);
+        //Passando o total para seta em outras telas
+        SetaValores.setTotalLitros(divisao);
+        exibieResultado.setText("Total é de "+totalFormatado+" litros");
+
+    }
+    /**
+     * Método para executar a operação da quilomentragem de ida é voltar
+     */
+    public void operacaoQuilomentros2Vezes(){
+        //Passando nas linhas de baixo os dados do tipo String para Double
+        double quilomentragem=Double.parseDouble(KmPercorrer.getText().toString());
+        double KM_LITROS=Double.parseDouble(kmLitros.getText().toString());
+        // passando os valores para seta em outras telas
+        SetaValores.setDistanciaPercorrer(quilomentragem);
+        SetaValores.setKmPorLitros(KM_LITROS);
+        // Variável na linha de baixo armazenar o resultado da divisão
+        double divisao=(quilomentragem*2)/KM_LITROS;
+        // formatar o resultado em casas decimais
+        String totalFormatado=decimalFt.format(divisao);
         //Passando o total para seta em outras telas
         SetaValores.setTotalLitros(divisao);
         exibieResultado.setText("Total é de "+totalFormatado+" litros");
@@ -140,7 +191,11 @@ public class LitrosPorQuilomentros extends AppCompatActivity {
             // Variável campos receber  valor false
             campos=false;
             // Método que executar o calculor dos quilômetros se caso a variável campos seja false
-            operacaoQuilomentros();
+            if(opcaoCalculor.equals("Ativado")){
+                operacaoQuilomentros2Vezes();
+            }else {
+                operacaoQuilomentros();
+            }
         }
         // Retorna a variável campos com algum valor true ou false
         return campos;
